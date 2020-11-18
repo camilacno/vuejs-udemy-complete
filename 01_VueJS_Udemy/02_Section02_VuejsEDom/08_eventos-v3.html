@@ -1,0 +1,42 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+  <p>{{ contador }}</p>
+  <button v-on:click="somar(5, $event)">Somar 1</button>
+  <p v-on:mousemove="atualizarXY">Mouse: {{ x }} e {{ y }}</p>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      contador: 0,
+      x: 0,
+      y: 0,
+    },
+    methods: {
+      somar(passo, ev) {
+        conso.log(ev);
+        this.contador += passo;
+      },
+      atualizarXY(event) {
+        this.x = event.clientX;
+        this.y = event.clientY;
+      },
+    },
+  });
+</script>
+
+<!--
+Notas da aula
+
+1. Parâmetros personalizados em funções relacionadas a eventos
+função somar()
+Ao passar um parâmetro personalizado (neste caso o passo), o evento, que é
+passado por padrão, não mais o será. Para que ele ainda esteja disponível na
+chamada da função, é necessário declarar explicitamente usando a palavra
+reservada '$event'
+Na declaração da função o evento pode ser chamado da forma desejada, mas na
+deckaração da diretiva é necessário usar a palavra reservada.
+
+-->

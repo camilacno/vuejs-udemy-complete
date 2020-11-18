@@ -1,0 +1,36 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+  <p>{{ titulo }}</p>
+  <p>{{ saudacao() }}</p>
+  <a v-bind:href="link">Google</a>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      titulo: 'Usando VueJS',
+      link: 'http://www.google.com.br',
+    },
+    methods: {
+      saudacao() {
+        return this.titulo;
+      },
+    },
+  });
+</script>
+
+<!--
+Notas da aula
+
+1. v-bind
+Serve para fazer a ligação entre algo que está na Vue instance e um atributo da
+tag dentro do template.
+
+Diretivas:
+Propriedades personalizadas que não são nativas do HTML, utilizadas para
+manipular atributos/propriedades das tags dentro do HTML, através de
+processamento javascript.
+
+-->
