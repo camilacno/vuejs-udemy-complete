@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue"></script>
+
+    <title>Condicionais V3</title>
+  </head>
+  <body>
+    <div id="app">
+      <template v-if="logado">
+        <p>Usuário logado: {{ nome }}</p>
+        <p>Perfil: Admin</p>
+      </template>
+      <p v-else-if="anonimo">Navegando como anônimo</p>
+      <p v-else>Nenhum usuário logado</p>
+      <button @click="logado = !logado">
+        {{ logado ? 'Sair' : 'Entrar' }}
+      </button>
+      <input type="checkbox" v-model="anonimo" />
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          nome: 'Agatha',
+          logado: false,
+          anonimo: false,
+        },
+      });
+    </script>
+  </body>
+</html>
+
+<!--
+Notas da aula
+
+1. template
+O uso da tag template não gera elemento no html (como o fragment do React), mas
+pode ser usado com renderizações condicionais.
+
+2. Uso de v-if e renderização na tela
+Com a utilização do v-if e demais associados, quando não satisfeitas as condições,
+o elemento é REMOVIDO da DOM. Não apenas deixa de ser exibido, ele é removido
+do documento. Para os casos em que se queira apenas remover da exibição mas
+continuar com a renderização do elemento na DOM (mesmo que não na tela), usa-se
+as diretivas v-show.
+-->
