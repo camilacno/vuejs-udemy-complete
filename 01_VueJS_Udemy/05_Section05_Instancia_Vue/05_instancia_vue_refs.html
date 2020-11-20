@@ -1,0 +1,39 @@
+<meta charset="UTF-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+  <h1 ref="aulaRef">{{ aula }}</h1>
+  <h2>{{ modulo }}</h2>
+  <button @click="alterarAula">Alterar Aula</button>
+  <button @click="alterarModulo">Alterar Módulo</button>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      aula: 'Aula: Usando refs',
+      modulo: 'Módulo: Instância Vue',
+    },
+    methods: {
+      alterarModulo() {
+        this.modulo += '#';
+      },
+      alterarAula() {
+        this.aula += '#';
+      },
+    },
+  });
+
+  // vm.$refs.aulaRef.innerText = 'Alterado diretamente :(';
+</script>
+
+<!--
+Notas da aula
+
+O que está descrito na Vue instance tem prioridade quando da alteração direta
+através de refs (neste caso, mesmo que o elemento seja renderizado com a
+alteração pelo uso do $refs, quando for chamado o método o Vue irá buscar e
+resolver, antes de aplicar o método, o valor que está definido dentro da
+instância Vue.)
+-->

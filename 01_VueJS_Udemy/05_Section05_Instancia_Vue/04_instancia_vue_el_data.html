@@ -1,0 +1,30 @@
+<!--
+Exercícios feitos direto no console, alterando os valores de 'titulo'
+diretamente, realizando atribuições através do vm.titulo e vm.$data.titulo
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue"></script>
+    <title>Instância Vue Externa</title>
+  </head>
+  <body>
+    <div id="app">{{ titulo }} <button @click="alterar">Alterar</button></div>
+
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          titulo: 'Teste',
+        },
+        methods: {
+          alterar() {
+            this.titulo += '!';
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
